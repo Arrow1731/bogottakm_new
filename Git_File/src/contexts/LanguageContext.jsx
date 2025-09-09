@@ -1,0 +1,193 @@
+"use client"
+
+import { createContext, useContext, useState } from "react"
+
+const translations = {
+  uz: {
+    home: "Bosh sahifa",
+    news: "Yangiliklar",
+    books: "Kitoblar",
+    admin: "Admin",
+    welcomeTitle: "Bog'ot tumani axborot kutubxona markaziga Xush kelibsiz",
+    welcomeSubtitle:
+      "Bilim, ta'lim va jamiyat uchun darvozangiz. Minglab kitoblarni kashf eting, tadbirlarda qatnashing va boshqa kitobxonlar bilan bog'laning.",
+    browseBooks: "Kitoblarni Ko'rish",
+    latestNews: "So'nggi Yangiliklar",
+    aboutLibrary: "Kutubxonamiz Haqida",
+    aboutDescription1:
+      "Hozirda Bog’ot tuman Axborot-kutubxona markazi tumandagi Madaniyat uyi binosida joylashgan. ",
+    aboutDescription2:
+      "Bizning fondimizda 96 000 dan ortiq kitoblar, elektron, audio va raqamli adabiyotlar, davriy nashrlar va multimedia fayillari mavjud.",
+    ourServices: "Bizning Xizmatlarimiz",
+    bookLending: "Kitob Berish",
+    bookLendingDesc: "Badiiy, ilmiy va ma'lumotnoma materiallarining keng kolleksiyasidan foydalaning.",
+    eventsPrograms: "Tadbirlar va Dasturlar",
+    eventsProgramsDesc: "Kitob klublari, muallif uchrashuvlari, seminarlar va jamiyat tadbirlariga qo'shiling.",
+    studySpaces: "O'qish Joylari",
+    studySpacesDesc: "Barcha a'zolar uchun jim o'qish joylari, guruh xonalari va kompyuter stansiyalari mavjud.",
+    visitUs: "Bizga Tashrif Buyuring",
+    openingHours: "Ish Vaqti",
+    libraryNews: "Kutubxona Yangiliklari",
+    newsSubtitle: "Tuman Kutubxonasidagi so'nggi tadbirlar, e'lonlar va voqealar bilan tanishib turing.",
+    backToHome: "Bosh sahifaga qaytish",
+    bookCatalog: "Kitoblar Katalogi",
+    bookCatalogSubtitle: "Turli janr va mavzulardagi kitoblarimizning keng kolleksiyasini o'rganing.",
+    searchPlaceholder: "Kitoblarni nom yoki muallif bo'yicha qidiring...",
+    selectGenre: "Janrni tanlang",
+    allGenres: "Barcha Janrlar",
+    by: "muallifi",
+    published: "Nashr yili:",
+    noBooksFound: "Mezonlaringizga mos kitoblar topilmadi.",
+    adminPanel: "Admin Paneli",
+    adminSubtitle: "Kutubxona kontentini boshqaring va statistikalarni kuzating.",
+    username: "Foydalanuvchi nomi",
+    password: "Parol",
+    login: "Kirish",
+    logout: "Chiqish",
+    loading: "Yuklanmoqda...",
+    error: "Xato",
+    success: "Muvaffaqiyat",
+    cancel: "Bekor qilish",
+    save: "Saqlash",
+    close: "Yopish",
+    xorazm: "Xorazm viloyati, Bog‘ot tuman Axborot kutubxona markazi direktori",
+    name: "Rajabova Gulbahor Farxadovna",
+    tel: "Tel:",
+    num: " +99 899 166 69 00",
+    rec: "Qabul kuni:",
+    wed: "Chorshanba",
+    cv: "CVni yuklab olish",
+  },
+  en: {
+    home: "Home",
+    news: "News",
+    books: "Books",
+    admin: "Admin",
+    welcomeTitle: "Welcome to the Bogat District Information Library Center",
+    welcomeSubtitle:
+      "Your gateway to knowledge, learning, and community. Discover thousands of books, attend events, and connect with fellow readers.",
+    browseBooks: "Browse Books",
+    latestNews: "Latest News",
+    aboutLibrary: "About Our Library",
+    aboutDescription1:
+      "Currently, the Bagat District Information and Library Center is located in the building of the District House of Culture.",
+    aboutDescription2:
+      "Our fond includes over 96,000 books, electronic, audio and digital literature, periodicals and multimedia.",
+    ourServices: "Our Services",
+    bookLending: "Book Lending",
+    bookLendingDesc: "Borrow from our extensive collection of fiction, non-fiction, and reference materials.",
+    eventsPrograms: "Events & Programs",
+    eventsProgramsDesc: "Join our book clubs, author readings, workshops, and community events.",
+    studySpaces: "Study Spaces",
+    studySpacesDesc: "Quiet study areas, group rooms, and computer stations available for all members.",
+    visitUs: "Visit Us",
+    openingHours: "Opening Hours",
+    libraryNews: "Library News",
+    newsSubtitle: "Stay updated with the latest events, announcements, and happenings at City Library.",
+    backToHome: "Back to Home",
+    bookCatalog: "Book Catalog",
+    bookCatalogSubtitle: "Explore our extensive collection of books across various genres and topics.",
+    searchPlaceholder: "Search books by title or author...",
+    selectGenre: "Select genre",
+    allGenres: "All Genres",
+    by: "by",
+    published: "Published:",
+    noBooksFound: "No books found matching your criteria.",
+    adminPanel: "Admin Panel",
+    adminSubtitle: "Manage library content and monitor statistics.",
+    username: "Username",
+    password: "Password",
+    login: "Login",
+    logout: "Logout",
+    loading: "Loading...",
+    error: "Error",
+    success: "Success",
+    cancel: "Cancel",
+    save: "Save",
+    close: "Close",
+    xorazm: "Director of the Information Library Center, Bogat district, Khorezm region",
+    name: "Rajabova Gulbahor Farkhadovna",
+    tel: "Tel:",
+    num: " +99 899 166 69 00",
+    rec: "Reception day ",
+    wed: "Wednesday",
+    cv: "Download CV",
+  },
+  ru: {
+    home: "Главная",
+    news: "Новости",
+    books: "Книги",
+    admin: "Админ",
+    welcomeTitle: "Добро пожаловать в Информационно-библиотечный центр округа Богат",
+    welcomeSubtitle:
+      "Ваш путь к знаниям, обучению и сообществу. Откройте для себя тысячи книг, посещайте мероприятия и общайтесь с другими читателями.",
+    browseBooks: "Просмотр Книг",
+    latestNews: "Последние Новости",
+    aboutLibrary: "О Нашей Библиотеке",
+    aboutDescription1: "В настоящее время Богатинский районный информационно-библиотечный центр располагается в здании районного Дома культуры.",
+    aboutDescription2:
+      "В нашей фонде более 96 000 книг, электронной, аудио- и цифровой литературы, периодических изданий и мультимедийных файлов.",
+    ourServices: "Наши Услуги",
+    bookLending: "Выдача Книг",
+    bookLendingDesc: "Берите из нашей обширной коллекции художественной, научной и справочной литературы.",
+    eventsPrograms: "События и Программы",
+    eventsProgramsDesc:
+      "Присоединяйтесь к нашим книжным клубам, встречам с авторами, семинарам и общественным мероприятиям.",
+    studySpaces: "Места для Учебы",
+    studySpacesDesc: "Тихие учебные зоны, групповые комнаты и компьютерные станции доступны для всех участников.",
+    visitUs: "Посетите Нас",
+    openingHours: "Часы Работы",
+    libraryNews: "Новости Библиотеки",
+    newsSubtitle: "Будьте в курсе последних событий, объявлений и происходящего в Городской Библиотеке.",
+    backToHome: "Вернуться на главную",
+    bookCatalog: "Каталог Книг",
+    bookCatalogSubtitle: "Изучите нашу обширную коллекцию книг различных жанров и тематик.",
+    searchPlaceholder: "Поиск книг по названию или автору...",
+    selectGenre: "Выберите жанр",
+    allGenres: "Все Жанры",
+    by: "автор",
+    published: "Опубликовано:",
+    noBooksFound: "Книги, соответствующие вашим критериям, не найдены.",
+    adminPanel: "Панель Администратора",
+    adminSubtitle: "Управляйте контентом библиотеки и отслеживайте статистику.",
+    username: "Имя пользователя",
+    password: "Пароль",
+    login: "Войти",
+    logout: "Выйти",
+    loading: "Загрузка...",
+    error: "Ошибка",
+    success: "Успех",
+    cancel: "Отмена",
+    save: "Сохранить",
+    close: "Закрыть",
+    xorazm: "Директор Информационно-библиотечного центра Богатского района Хорезмской области",
+    name: "Раджабова Гульбахор Фархадовна",
+    tel: "Тел:",
+    num: "+99 899 166 69 00",
+    rec: "Приемный день:",
+    wed: "Среда",
+    cv: "Скачать резюме",
+  },
+}
+
+const LanguageContext = createContext()
+
+export function LanguageProvider({ children }) {
+  const [language, setLanguage] = useState("en")
+
+  const value = {
+    language,
+    setLanguage,
+    t: translations[language],
+  }
+
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
+}
+
+export function useLanguage() {
+  const context = useContext(LanguageContext)
+  if (!context) {
+    throw new Error("useLanguage must be used within a LanguageProvider")
+  }
+  return context
+}
