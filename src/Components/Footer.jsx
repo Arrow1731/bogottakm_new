@@ -1,44 +1,134 @@
+// import React from "react";
+// import Map_img from '../assets/Link → Google Map.png';
+
+// function Footer() {
+//   return (
+//     <footer>
+//       <div className="container">
+//         <div className="flex justify-between items-start py-[50px]">
+//           <div>
+//             <h3 className="font-bold text-[24px]">Bizga Tashrif Buyuring</h3><br />
+//             <p><a href="#">Beruniy MFY, O'zbekistan ko'chasi, 11 - uy</a></p>
+//             <p><a href="#">+998 315-19-51</a></p>
+//             <p><a href="#">bogottakm@gmail.com</a></p>
+
+//             {/* Social Icons */}
+//             <div></div>
+//           </div>
+//           <div>
+//             <h3 className="font-bold text-[24px]">Ish Vaqti</h3><br />
+//             <p>Dushanbadan - Jumagacha</p>
+//             <p>Shanba - Yakshanba</p>
+//           </div>
+//           <div>
+//             <h3 className="text-[#ffff]">Visit Us</h3><br />
+//             <p>09:00 - 18:00</p>
+//             <p>Dam Olish Kuni</p>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Footer Info */}
+
+//       <div>
+//         <div className="h-[452.27px] relative">
+//           <img className=" container w-[1280px] h-80 left-[620px] top-0 absolute rounded-[30px]" src={Map_img} />
+//           <div className="w-full h-44 left-0 top-[282.27px] absolute bg-gray-800">
+//             <div className="container">
+//               <div className="top-[78px] absolute right-[1100px]  text-white">© 2025 Bog'ot tumani - AKM. Barcha huquqlar himoyalangan.</div>
+//               <div className="text-[#fff] top-[102px] absolute right-[1170px]"><span class="text-white">Powered by </span> <span class="text-white "><a href="#">AZIZBEK1701</a></span> and  <span className="text-white"><a href="#">SOBIRJON</a></span></div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </footer>
+//   );
+// }
+
+// export default Footer;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React from "react";
-import Map_img from '../assets/Link → Google Map.png';
+import Map_img from "../assets/Link → Google Map.png";
 
 function Footer() {
   return (
-    <footer>
-      <div className="container">
-        <div className="flex justify-between items-start py-[50px]">
-          <div>
-            <h3 className="font-bold text-[24px]">Bizga Tashrif Buyuring</h3><br />
-            <p><a href="#">Beruniy MFY, O'zbekistan ko'chasi, 11 - uy</a></p>
-            <p><a href="#">+998 315-19-51</a></p>
-            <p><a href="#">bogottakm@gmail.com</a></p>
+    <footer className="bg-gray-100">
+      {/* Top Section */}
+      <div className="container mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-gray-800">
+        {/* Address */}
+        <div>
+          <h3 className="font-bold text-xl mb-3">Bizga Tashrif Buyuring</h3>
+          <p className="mb-1">
+            <a href="#">Beruniy MFY, O'zbekistan ko'chasi, 11 - uy</a>
+          </p>
+          <p className="mb-1">
+            <a href="tel:+9983151951">+998 315-19-51</a>
+          </p>
+          <p>
+            <a href="mailto:bogottakm@gmail.com">bogottakm@gmail.com</a>
+          </p>
+        </div>
 
-            {/* Social Icons */}
-            <div></div>
-          </div>
-          <div>
-            <h3 className="font-bold text-[24px]">Ish Vaqti</h3><br />
-            <p>Dushanbadan - Jumagacha</p>
-            <p>Shanba - Yakshanba</p>
-          </div>
-          <div>
-            <h3 className="text-[#ffff]">Visit Us</h3><br />
-            <p>09:00 - 18:00</p>
-            <p>Dam Olish Kuni</p>
-          </div>
+        {/* Working Days */}
+        <div>
+          <h3 className="font-bold text-xl mb-3">Ish Vaqti</h3>
+          <p>Dushanbadan - Jumagacha</p>
+          <p>Shanba - Yakshanba</p>
+        </div>
+
+        {/* Working Hours */}
+        <div>
+          <h3 className="font-bold text-xl mb-3">Visit Us</h3>
+          <p>09:00 - 18:00</p>
+          <p>Dam Olish Kuni</p>
         </div>
       </div>
 
-      {/* Footer Info */}
-
-      <div>
-        <div className="h-[452.27px] relative">
-          <img className=" container w-[1280px] h-80 left-[620px] top-0 absolute rounded-[30px]" src={Map_img} />
-          <div className="w-full h-44 left-0 top-[282.27px] absolute bg-gray-800">
-            <div className="container">
-              <div className="top-[78px] absolute right-[1100px]  text-white">© 2025 Bog'ot tumani - AKM. Barcha huquqlar himoyalangan.</div>
-              <div className="text-[#fff] top-[102px] absolute right-[1170px]"><span class="text-white">Powered by </span> <span class="text-white "><a href="#">AZIZBEK1701</a></span> and  <span className="text-white"><a href="#">SOBIRJON</a></span></div>
-            </div>
-          </div>
+      {/* Map + Bottom Info */}
+      <div className="relative w-full">
+        <div className="container">
+          <img
+            src={Map_img}
+            alt="Google Map"
+            className="w-full h-72 object-cover rounded-t-2xl"
+          />
+        </div>
+        <div className="bg-gray-800 text-white text-center py-6 px-4">
+          <p className="text-sm">
+            © 2025 Bog'ot tumani - AKM. Barcha huquqlar himoyalangan.
+          </p>
+          <p className="text-sm mt-2">
+            Powered by{" "}
+            <a href="#" className="font-semibold">
+              AZIZBEK1701
+            </a>{" "}
+            and{" "}
+            <a href="#" className="font-semibold">
+              SOBIRJON
+            </a>
+          </p>
         </div>
       </div>
     </footer>

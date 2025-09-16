@@ -1,3 +1,4 @@
+// News.jsx
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
@@ -6,21 +7,22 @@ export default function News() {
   const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchNews = async () => {
-    try {
-      const snapshot = await getDocs(collection(db, "news"));
-      const newsData = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setNewsList(newsData);
-      setLoading(false);
-    } catch (error) {
-      console.error("Xatolik: Yangiliklarni yuklab bo‘lmadi", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, "news"));
+        const newsData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setNewsList(newsData);
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchNews();
   }, []);
 
@@ -36,6 +38,7 @@ export default function News() {
     <div className="bg-gray-100 min-h-screen py-8">
       <div className="container mx-auto max-w-5xl px-4">
         <h1 className="text-3xl font-bold mb-6 text-center">📢 Yangiliklar</h1>
+
         {newsList.length === 0 ? (
           <p className="text-center text-gray-500">
             Hozircha yangiliklar mavjud emas.
@@ -45,25 +48,29 @@ export default function News() {
             {newsList.map((item) => (
               <div
                 key={item.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-xl shadow-md overflow-hidden"
               >
                 {/* Image */}
-                <img
-                  src={item.rasm}
-                  alt={item.sarlavha}
-                  className="w-full h-48 object-cover"
-                />
+                {item.img && (
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-48 object-cover"
+                  />
+                )}
 
                 {/* Content */}
-                <div className="p-4">
-                  <h2 className="text-xl font-semibold">{item.sarlavha}</h2>
-                  <p className="text-gray-600 mt-2">
-                    {item.info.length > 100
-                      ? item.info.substring(0, 100) + "..."
-                      : item.info}
+                <div className="p-4 flex flex-col">
+                  <h2 className="text-xl font-semibold">{item.title}</h2>
+
+                  <p className="text-gray-600 mt-2 text-sm md:text-base flex-grow">
+                    {item.description && item.description.length > 100
+                      ? item.description.substring(0, 100) + "..."
+                      : item.description}
                   </p>
+
                   <p className="text-sm text-gray-500 mt-3">
-                    📅 {item.sana}
+                    📅 {item.publishDate}
                   </p>
                 </div>
               </div>
