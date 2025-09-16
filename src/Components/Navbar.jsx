@@ -6,7 +6,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="bg-[#f7bf9f] shadow">
+    <header className="bg-[#dddcdb] shadow">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo / Brand */}
         <NavLink
