@@ -1,35 +1,6 @@
-// import React from "react";
-// import { NavLink } from "react-router-dom";
-
-// function Navbar() {
-//   return (
-//     <div className="bg-[#f7bf9f]">
-//       <nav className="container py-5 flex justify-between items-center">
-//         <NavLink to="/" className={({ isActive }) => isActive ? "font-bold text-[#424551]" : "text-[#424551]"}>
-//           Home
-//         </NavLink>
-
-//         <span className="flex gap-10 items-center">
-//           <NavLink to="/books" className={({ isActive }) => isActive ? "font-lato font-bold text-[#424551]" : "font-lato text-[#424551]"}>
-//             Kitoblar
-//           </NavLink>
-
-//           <NavLink to="/news" className={({ isActive }) => isActive ? "font-lato font-bold text-[#424551]" : "font-lato text-[#424551]"}>
-//             Yangiliklar
-//           </NavLink>
-
-//           {/* <NavLink to="/admin" className="font-lato text-[#424551]">Admin</NavLink> */}
-//         </span>
-//       </nav>
-//     </div>
-//   );
-// }
-
-// export default Navbar;
-
-
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Logo from "../assets/logo_web.png";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,9 +11,10 @@ function Navbar() {
         {/* Logo / Brand */}
         <NavLink
           to="/"
-          className="text-xl font-bold text-[#424551] hover:text-gray-700"
+          className="text-xl font-bold text-[#424551] hover:text-gray-700 flex items-center gap-3"
         >
-          Kutubxona
+          <img className="w-[70px]" src={Logo} alt="" />
+          Bog'ot tuman - AKM
         </NavLink>
 
         {/* Desktop Menu */}
@@ -55,7 +27,7 @@ function Navbar() {
                 : "text-[#424551] hover:text-gray-700"
             }
           >
-            Home
+            Bosh sahifa
           </NavLink>
           <NavLink
             to="/books"
@@ -100,7 +72,7 @@ function Navbar() {
                 : "block text-[#424551] hover:text-gray-700"
             }
           >
-            Home
+            Bosh sahifa
           </NavLink>
           <NavLink
             to="/books"

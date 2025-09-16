@@ -37,7 +37,7 @@ export default function News() {
   return (
     <div className="bg-gray-100 min-h-screen py-8">
       <div className="container mx-auto max-w-5xl px-4">
-        <h1 className="text-3xl font-bold mb-6 text-center">📢 Yangiliklar</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">Yangiliklar</h1>
 
         {newsList.length === 0 ? (
           <p className="text-center text-gray-500">

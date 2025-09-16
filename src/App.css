@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.bg_f {
+  background: url('./assets/header_bg.jpg') no-repeat center center/cover;
+  position: relative;
+  padding: 4rem 0;
+  width: 100%;
+  height: 400px;
+}
